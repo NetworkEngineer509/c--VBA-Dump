@@ -40,6 +40,9 @@ class Program
                 int nameOffset = moduleOffset + BitConverter.ToInt32(fileBytes, moduleOffset + 8);
                 int codeOffset = moduleOffset + BitConverter.ToInt32(fileBytes, moduleOffset + 20);
                 int codeLength = BitConverter.ToInt32(fileBytes, moduleOffset + 24);
+
+                Console.WriteLine($"Module {j+1}: nameOffset={nameOffset}, codeOffset={codeOffset}, codeLength={codeLength}");
+
                 string moduleName = Encoding.Unicode.GetString(fileBytes, nameOffset, codeOffset - nameOffset - 2);
                 string moduleCode = Encoding.Unicode.GetString(fileBytes, codeOffset, codeLength);
 
